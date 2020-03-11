@@ -23,7 +23,13 @@ const HomePage: FC = (): ReactElement => {
         <h2>{mockData.SERVICE_NAME}</h2>
       </header>
 
-      <CarouselSlider />
+      <CarouselSlider
+        adverts={mockData.adverts}
+        dots={true}
+        autoPlay={5000}
+        animationSpeed={1000}
+        infinite={true}
+      />
 
       <main>
         <Typography variant="h6">Оберіть заклад:</Typography>
