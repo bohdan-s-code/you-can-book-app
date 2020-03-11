@@ -22,3 +22,5 @@ export const servicesData: ServiceData[] = [
     numberOfReviews: 56,
   },
 ];
+
+export const adverts: string[] = ['Акції %', 'Акції %'];
