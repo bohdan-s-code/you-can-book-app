@@ -24,3 +24,16 @@ export const servicesData: ServiceData[] = [
 ];
 
 export const adverts: string[] = ['Акції %', 'Акції %'];
+
+export const getStepContent = (step: number): string => {
+  switch (step) {
+    case 0:
+      return 'Step 1: Select campaign settings...';
+    case 1:
+      return 'Step 2: What is an ad group anyways?';
+    case 2:
+      return 'Step 3: This is the bit I really care about!';
+    default:
+      return 'Unknown step';
+  }
+};

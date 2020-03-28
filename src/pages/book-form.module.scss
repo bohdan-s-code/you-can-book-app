@@ -1,0 +1,13 @@
+.header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #000000;
+  padding: 10px 0;
+
+  .arrowBack {
+    position: absolute;
+    left: 5px;
+  }
+}

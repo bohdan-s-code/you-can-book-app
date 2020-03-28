@@ -13,3 +13,7 @@ export interface ServiceData {
   rating: string;
   numberOfReviews: number;
 }
+
+export interface FormState {
+  step: number;
+}

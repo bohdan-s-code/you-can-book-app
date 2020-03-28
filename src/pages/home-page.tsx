@@ -64,7 +64,7 @@ const HomePage: FC = (): ReactElement => {
                   </Typography>
                 </div>
               </CardContent>
-              <Button variant="contained">Записатись</Button>
+              <Button variant="contained" href={'/book-form'}>Записатись</Button>
             </Card>
           ))}
         </div>
