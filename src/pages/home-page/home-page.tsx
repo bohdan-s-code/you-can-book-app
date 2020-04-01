@@ -10,17 +10,17 @@ import {
   Link,
 } from '@material-ui/core';
 import { WallpaperOutlined, ImageOutlined } from '@material-ui/icons';
-import * as mockData from '../core/mock-data';
-import CarouselSlider from '../components/carousel-slider';
+import * as mockData from '../../core/mock-data';
+import CarouselSlider from '../../components/carousel-slider/carousel-slider';
 import styles from './home-page.module.scss';
-import { generateMapsLink } from '../utils/generateMapsLink';
+import { generateMapsLink } from '../../utils/generate-maps-link';
 
 const HomePage: FC = (): ReactElement => {
   return (
     <div>
       <header className={styles.header}>
         <WallpaperOutlined className={styles.logo} />
-        <h2>{mockData.SERVICE_NAME}</h2>
+        <h2>{mockData.BUSINESS_NAME}</h2>
       </header>
 
       <CarouselSlider
@@ -35,7 +35,7 @@ const HomePage: FC = (): ReactElement => {
         <Typography variant="h6">Оберіть заклад:</Typography>
         <Divider style={{ marginBottom: 10 }} />
         <div className={styles.cards}>
-          {mockData.servicesData.map((service, index) => (
+          {mockData.businessData.map((service, index) => (
             <Card key={index} className={styles.card} elevation={3}>
               <CardMedia classes={{ root: styles.cardMedia }}>
                 <ImageOutlined style={{ fontSize: 200 }} />

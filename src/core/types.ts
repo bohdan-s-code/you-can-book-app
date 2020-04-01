@@ -4,7 +4,7 @@ export interface GoogleMapsSearchParams {
   zoom: number;
 }
 
-export interface ServiceData {
+export interface BusinessData {
   name: string;
   location: string;
   mapParams: GoogleMapsSearchParams;
@@ -14,6 +14,30 @@ export interface ServiceData {
   numberOfReviews: number;
 }
 
+export interface ServiceItem {
+  id: string;
+  label: string;
+  price: string;
+  time: string;
+  checked: boolean;
+}
+
+export interface ServicesFormData {
+  id: string;
+  label: string;
+  items: ServiceItem[];
+}
+
 export interface FormState {
-  step: number;
+  services: ServicesFormData[];
+}
+
+export interface Specialists {
+  name: string;
+  type: string;
+  rating: {
+    value: number;
+    numberOfReviews: number;
+  };
+  avatar?: string;
 }

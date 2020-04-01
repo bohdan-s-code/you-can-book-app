@@ -1,6 +1,10 @@
-import { FormActionTypes, SET_FORM_STEP } from './core/action-types';
+import { FormActionTypes, SET_SERVICE_CHECKED } from './core/action-types';
 
-export const setFormStep = (newStep: number): FormActionTypes => ({
-  type: SET_FORM_STEP,
-  payload: newStep,
+export const updateServices = (
+  parentId: string,
+  serviceId: string
+): FormActionTypes => ({
+  type: SET_SERVICE_CHECKED,
+  parentId,
+  serviceId,
 });

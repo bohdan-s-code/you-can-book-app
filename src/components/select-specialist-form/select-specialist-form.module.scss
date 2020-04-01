@@ -1,0 +1,9 @@
+.ratingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  .ratingLabel {
+    font-size: 13px;
+  }
+}

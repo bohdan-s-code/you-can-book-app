@@ -1,8 +1,9 @@
-export const SET_FORM_STEP = 'SELECT_STEP';
+export const SET_SERVICE_CHECKED = 'SET_SERVICE_CHECKED';
 
-interface SetFormStep {
-  type: typeof SET_FORM_STEP;
-  payload: number;
+export interface UpdateService {
+  type: typeof SET_SERVICE_CHECKED;
+  parentId: string;
+  serviceId: string;
 }
 
-export type FormActionTypes = SetFormStep;
+export type FormActionTypes = UpdateService;

@@ -1,0 +1,13 @@
+.checkboxLabel {
+  display: flex;
+  flex-direction: column;
+
+  .itemName {
+    font-size: 18px;
+  }
+
+  .itemSecondary {
+    font-size: 16px;
+    color: #616161;
+  }
+}

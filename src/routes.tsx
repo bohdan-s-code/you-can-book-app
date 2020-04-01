@@ -1,8 +1,8 @@
 import React, { FC, ReactElement } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import HomePage from './pages/home-page';
-import BookForm from './pages/book-form';
-import NotFound from './pages/not-found';
+import HomePage from './pages/home-page/home-page';
+import BookForm from './pages/book-form/book-form';
+import NotFound from './pages/not-found/not-found';
 
 const Routes: FC = (): ReactElement => (
   <Switch>

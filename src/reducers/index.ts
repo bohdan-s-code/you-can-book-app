@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import { formReducer } from './form';
+import { servicesReducer } from './services';
 
 export const rootReducer = combineReducers({
-  form: formReducer,
+  form: servicesReducer,
 });
 
-export type RootState = ReturnType<typeof rootReducer>
+export type AppState = ReturnType<typeof rootReducer>
