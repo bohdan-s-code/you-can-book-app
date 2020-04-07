@@ -6,7 +6,7 @@ import Routes from './routes';
 const App: FC = (): ReactElement => {
   return (
     <Container maxWidth="md" style={{ minWidth: 360, height: '100%' }}>
-      <Router>
+      <Router basename={'/'}>
         <Routes />
       </Router>
     </Container>
