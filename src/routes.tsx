@@ -6,7 +6,7 @@ import BookForm from './pages/book-form/book-form';
 const Routes: FC = (): ReactElement => (
   <Switch>
     <Route exact path={'/'} component={HomePage} />
-    <Route exact path={'/book-form'} component={BookForm} />
+    <Route path={'/book-form'} component={BookForm} />
     <Redirect to={'/'} />
   </Switch>
 );
