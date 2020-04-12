@@ -1,0 +1,16 @@
+.messageBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .icon {
+    font-size: 80px;
+  }
+
+  .messageText {
+    text-align: center;
+
+    .success {
+    }
+  }
+}

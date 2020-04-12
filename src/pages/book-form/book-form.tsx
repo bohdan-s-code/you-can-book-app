@@ -18,7 +18,7 @@ import SelectDateForm from '../../components/select-date-form/select-date-form';
 import UserInfoForm from '../../components/user-info-form/user-info-form';
 import { AppState } from '../../reducers';
 import { getSelectedTimeslots, getServicesCheckedItems } from '../../selectors';
-import { ServiceItem, TimeSlots } from '../../core/types';
+import { ServiceItem, Timeslot } from '../../core/types';
 import {
   setNextStep,
   setPreviousStep,
@@ -218,7 +218,7 @@ const BookForm: FC<BookFormProps> = ({
 
 interface BookFormStateProps {
   checkedServiceItems: ServiceItem[];
-  selectedTimeslots: TimeSlots[];
+  selectedTimeslots: Timeslot[];
   selectedDate: Date;
   step: number;
 }

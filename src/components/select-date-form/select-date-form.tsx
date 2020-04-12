@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { setBookingDate, setTimeslotSelected } from '../../actions';
 import styles from './select-date-form.module.scss';
 import { AppState } from '../../reducers';
-import { TimeSlots } from '../../core/types';
+import { Timeslot } from '../../core/types';
 
 const SelectDateForm: FC<SelectDateFormDispatchProps &
   SelectDateFormStateProps> = ({
@@ -62,7 +62,7 @@ const SelectDateForm: FC<SelectDateFormDispatchProps &
 
 type SelectDateFormStateProps = {
   date: Date;
-  timeSlots: TimeSlots[];
+  timeSlots: Timeslot[];
 };
 
 type SelectDateFormDispatchProps = {

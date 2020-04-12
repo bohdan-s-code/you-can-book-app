@@ -32,7 +32,7 @@ export interface FormState {
   services: ServicesFormData[];
   specialists: Specialists[];
   selectedDate: Date;
-  timeSlots: TimeSlots[];
+  timeSlots: Timeslot[];
 }
 
 export interface StepperState {
@@ -51,7 +51,7 @@ export interface Specialists {
   selected: boolean;
 }
 
-export type TimeSlots = {
+export type Timeslot = {
   id: string;
   value: string;
   selected: boolean;

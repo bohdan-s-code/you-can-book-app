@@ -55,7 +55,12 @@ const UserInfoForm: FC = (): ReactElement => {
             label="Електронна пошта"
             margin="dense"
           />
-          <Button type="submit" variant="contained" color="primary">
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            href="/success-booking"
+          >
             Записатись
           </Button>
         </Form>

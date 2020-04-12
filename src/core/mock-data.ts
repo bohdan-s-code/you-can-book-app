@@ -3,7 +3,7 @@ import {
   BusinessData,
   ServicesFormData,
   Specialists,
-  TimeSlots,
+  Timeslot,
 } from './types';
 
 export const BUSINESS_NAME = '[Назва закладу]';
@@ -252,7 +252,7 @@ export const specialists: Specialists[] = [
   },
 ];
 
-export const timeSlots: TimeSlots[] = [
+export const timeSlots: Timeslot[] = [
   { id: uuidv4(), value: '10:00', selected: false },
   { id: uuidv4(), value: '10:30', selected: false },
   { id: uuidv4(), value: '11:00', selected: false },

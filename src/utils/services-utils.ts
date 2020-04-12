@@ -1,5 +1,5 @@
 import { findIndex } from 'lodash';
-import { ServicesFormData, Specialists, TimeSlots } from '../core/types';
+import { ServicesFormData, Specialists, Timeslot } from '../core/types';
 
 export const setServiceItemChecked = (
   services: ServicesFormData[],
@@ -37,9 +37,9 @@ export const setSpecialistSelected = (
 };
 
 export const setTimeslotSelected = (
-  timeSlots: TimeSlots[],
+  timeSlots: Timeslot[],
   id: string
-): TimeSlots[] => {
+): Timeslot[] => {
   return timeSlots.map(timeSlot =>
     timeSlot.id === id
       ? { ...timeSlot, selected: true }
@@ -47,7 +47,7 @@ export const setTimeslotSelected = (
   );
 };
 
-export const unselectTimeslot = (timeSlots: TimeSlots[]): TimeSlots[] => {
+export const unselectTimeslot = (timeSlots: Timeslot[]): Timeslot[] => {
   return timeSlots.map(timeslot =>
     timeslot.selected ? { ...timeslot, selected: false } : timeslot
   );
