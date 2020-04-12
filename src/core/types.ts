@@ -17,8 +17,8 @@ export interface BusinessData {
 export interface ServiceItem {
   id: string;
   label: string;
-  price: string;
-  time: string;
+  price: number;
+  time: number;
   checked: boolean;
 }
 
@@ -30,9 +30,17 @@ export interface ServicesFormData {
 
 export interface FormState {
   services: ServicesFormData[];
+  specialists: Specialists[];
+  selectedDate: Date;
+  timeSlots: TimeSlots[];
+}
+
+export interface StepperState {
+  step: number;
 }
 
 export interface Specialists {
+  id: string;
   name: string;
   type: string;
   rating: {
@@ -40,4 +48,11 @@ export interface Specialists {
     numberOfReviews: number;
   };
   avatar?: string;
+  selected: boolean;
 }
+
+export type TimeSlots = {
+  id: string;
+  value: string;
+  selected: boolean;
+};

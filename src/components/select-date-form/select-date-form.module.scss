@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  .picker {
+    flex: 0 0 325px;
+    margin-right: 20px;
+  }
+
+  .times {
+    display: flex;
+    align-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex: 1 1 50%;
+
+    .slot {
+      margin: 10px;
+    }
+  }
+}

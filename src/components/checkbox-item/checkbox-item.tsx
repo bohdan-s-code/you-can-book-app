@@ -7,8 +7,7 @@ import {
 } from '@material-ui/core';
 import { bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
-import { AppState } from '../../reducers';
-import { updateServices } from '../../actions';
+import { setServiceChecked } from '../../actions';
 import styles from './checkbox-item.module.scss';
 import { ServiceItem } from '../../core/types';
 
@@ -31,14 +30,14 @@ const CheckboxItem: FC<CheckboxItemProps> = ({
           {label}
         </Typography>
         <Typography variant="subtitle1" className={styles.itemSecondary}>
-          {price} | {time}
+          {price}грн. | {time}
         </Typography>
       </div>
     );
   };
 
   return (
-    <ListItem button onClick={handleClick}>
+    <ListItem button onClick={handleClick} selected={item.checked}>
       <FormControlLabel
         control={
           <Checkbox
@@ -72,6 +71,6 @@ export interface CheckboxItemProps
 const mapStateToProps = (): CheckboxItemStateProps => ({});
 
 const mapDispatchToProps = (dispatch: Dispatch): CheckboxItemDispatchProps =>
-  bindActionCreators({ updateServices }, dispatch);
+  bindActionCreators({ updateServices: setServiceChecked }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(CheckboxItem);

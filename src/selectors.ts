@@ -1,5 +1,5 @@
 import { AppState } from './reducers';
-import { ServiceItem } from './core/types';
+import { ServiceItem, TimeSlots } from './core/types';
 
 export const getServicesCheckedItems = (state: AppState): ServiceItem[] => {
   const checkedServices: ServiceItem[] = [];
@@ -11,4 +11,8 @@ export const getServicesCheckedItems = (state: AppState): ServiceItem[] => {
     });
   });
   return checkedServices;
+};
+
+export const getSelectedTimeslots = (state: AppState): TimeSlots[] => {
+  return state.form.timeSlots.filter(timeslot => timeslot.selected);
 };

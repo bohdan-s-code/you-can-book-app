@@ -9,18 +9,35 @@ import {
   Divider,
 } from '@material-ui/core';
 import { Rating } from '@material-ui/lab';
+import { bindActionCreators, Dispatch } from 'redux';
+import { connect } from 'react-redux';
 import { Specialists } from '../../core/types';
+import { AppState } from '../../reducers';
+import { selectSpecialist, setNextStep } from '../../actions';
 import styles from './select-specialist-form.module.scss';
 
 const SelectSpecialistForm: FC<SelectSpecialistFormProps> = ({
-  data,
+  specialists,
+  selectSpecialist,
+  setNextStep,
 }): ReactElement => {
+  const handleListItemClick = (id: string): void => {
+    selectSpecialist(id);
+    setNextStep();
+  };
+
   return (
     <List>
-      {data.map(
-        ({ name, type, avatar, rating }): ReactElement => (
-          <div>
-            <ListItem button>
+      {specialists.map(
+        ({ id, name, type, avatar, rating, selected }): ReactElement => (
+          <div key={id}>
+            <ListItem
+              button
+              selected={selected}
+              onClick={(): void => {
+                handleListItemClick(id);
+              }}
+            >
               <ListItemAvatar>
                 {avatar ? (
                   <Avatar src={avatar} alt={name} />
@@ -44,8 +61,29 @@ const SelectSpecialistForm: FC<SelectSpecialistFormProps> = ({
   );
 };
 
-export interface SelectSpecialistFormProps {
-  data: Specialists[];
+export interface SelectSpecialistFormProps
+  extends SelectSpecialistFormStateProps,
+    SelectSpecialistFormDispatchProps {}
+
+interface SelectSpecialistFormStateProps {
+  specialists: Specialists[];
 }
 
-export default SelectSpecialistForm;
+interface SelectSpecialistFormDispatchProps {
+  selectSpecialist: (id: string) => void;
+  setNextStep: () => void;
+}
+
+export const mapStateToProps = (
+  state: AppState
+): SelectSpecialistFormStateProps => ({
+  specialists: state.form.specialists,
+});
+
+export const mapDispatchToProps = (dispatch: Dispatch) =>
+  bindActionCreators({ selectSpecialist, setNextStep }, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SelectSpecialistForm);

@@ -7,12 +7,17 @@ import { store } from './store';
 import App from './app';
 import * as serviceWorker from './serviceWorker';
 import './index.css';
+import 'moment/locale/uk';
+import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+import MomentUtils from '@date-io/moment';
 
 ReactDOM.render(
   <Provider store={store}>
-    <ThemeProvider theme={theme}>
-      <App />
-    </ThemeProvider>
+    <MuiPickersUtilsProvider utils={MomentUtils} locale="ua">
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
+    </MuiPickersUtilsProvider>
   </Provider>,
   document.getElementById('root')
 );
