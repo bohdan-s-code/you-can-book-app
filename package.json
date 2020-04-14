@@ -2,6 +2,7 @@
   "name": "you-can-book-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://you-can-book-e0461.web.app",
   "dependencies": {
     "@brainhubeu/react-carousel": "1.12.18",
     "@date-io/moment": "1.3.13",
