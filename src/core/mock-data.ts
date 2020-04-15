@@ -1,12 +1,14 @@
 import { v4 as uuidv4 } from 'uuid';
-import {
-  BusinessData,
-  ServicesFormData,
-  Specialists,
-  Timeslot,
-} from './types';
+import { BusinessData, ServicesFormData, Specialists, Timeslot } from './types';
 
 export const BUSINESS_NAME = '[Назва закладу]';
+
+export const STEPPER_STEPS = [
+  'Вибір послуги',
+  'Вибір спеціаліста',
+  'Вибір дати та часу',
+  'Підтвердження запису',
+];
 
 export const businessData: BusinessData[] = [
   {
@@ -270,4 +272,6 @@ export const timeSlots: Timeslot[] = [
   { id: uuidv4(), value: '17:00', selected: false },
   { id: uuidv4(), value: '17:30', selected: false },
   { id: uuidv4(), value: '18:00', selected: false },
+  { id: uuidv4(), value: '18:30', selected: false },
+  { id: uuidv4(), value: '19:00', selected: false },
 ];

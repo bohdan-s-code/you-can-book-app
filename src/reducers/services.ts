@@ -1,7 +1,7 @@
 import { FormState } from '../core/types';
 import {
-  CLEAR_DATE_SELECTED,
   FormActionTypes,
+  CLEAR_DATE_SELECTED,
   SELECT_SPECIALIST,
   SET_BOOKING_DATE,
   SET_SERVICE_CHECKED,

@@ -1,16 +1,40 @@
-.messageBody {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.container {
+  padding-top: 30px;
 
-  .icon {
-    font-size: 80px;
-  }
+  .messageBody {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 0;
 
-  .messageText {
-    text-align: center;
+    .icon {
+      font-size: 80px;
+    }
 
-    .success {
+    .messageText {
+      text-align: center;
+
+      .secondaryTextContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        .secondary {
+          font-size: 16px;
+        }
+
+        .important {
+          text-transform: uppercase;
+          color: #000000;
+          font-weight: 500;
+          font-size: 16px;
+        }
+      }
+    }
+
+    .buttonGroup {
+      margin-top: 15px;
     }
   }
 }

@@ -1,1 +1,42 @@
+.container {
+  .snackBar {
+    width: 100%;
+    max-width: 800px;
 
+    & > div {
+      color: #000000;
+      width: 100%;
+      background: #ffffff;
+    }
+  }
+
+  .serviceCount {
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .serviceSecondaryCount {
+    font-size: 14px;
+  }
+
+  .searchField {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 950px) {
+  .container {
+    .snackBar {
+      width: 80%;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    .snackBar {
+      width: initial;
+    }
+  }
+}

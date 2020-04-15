@@ -2,10 +2,15 @@ import React, { FC, ReactElement } from 'react';
 import { Paper, Button } from '@material-ui/core';
 import { Formik, Form, Field } from 'formik';
 import { TextField } from 'formik-material-ui';
+import { bindActionCreators, Dispatch } from 'redux';
+import { connect } from 'react-redux';
+import { setNextStep } from '../../actions';
 import styles from './user-info-form.module.scss';
 
-const UserInfoForm: FC = (): ReactElement => {
-  const initialValues: userInfoFormInitialValues = {
+const UserInfoForm: FC<UserInfoFormStateProps & UserInfoFormDispatchProps> = ({
+  setNextStep,
+}): ReactElement => {
+  const initialValues: UserInfoFormInitialValues = {
     firstName: '',
     lastName: '',
     phoneNumber: '',
@@ -59,7 +64,7 @@ const UserInfoForm: FC = (): ReactElement => {
             type="submit"
             variant="contained"
             color="primary"
-            href="/success-booking"
+            onClick={setNextStep}
           >
             Записатись
           </Button>
@@ -69,11 +74,22 @@ const UserInfoForm: FC = (): ReactElement => {
   );
 };
 
-type userInfoFormInitialValues = {
+type UserInfoFormInitialValues = {
   firstName: string;
   lastName: string;
   phoneNumber: string;
   email: string;
 };
 
-export default UserInfoForm;
+type UserInfoFormStateProps = {};
+
+type UserInfoFormDispatchProps = {
+  setNextStep: () => void;
+};
+
+const mapStateToProps = (): UserInfoFormStateProps => ({});
+
+const mapDispatchToProps = (dispatch: Dispatch): UserInfoFormDispatchProps =>
+  bindActionCreators({ setNextStep }, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserInfoForm);

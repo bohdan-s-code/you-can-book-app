@@ -5,18 +5,93 @@
 
   .picker {
     flex: 0 0 325px;
-    margin-right: 20px;
+    margin: 10px;
   }
 
   .times {
+    position: relative;
     display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    justify-content: center;
     align-content: center;
-    flex-direction: row;
-    flex-wrap: wrap;
-    flex: 1 1 50%;
+    align-items: center;
+    max-width: 500px;
+    min-width: 325px;
+    margin: 10px;
+
+    .timeSlots {
+      text-align: center;
+
+      .item {
+        margin: 10px;
+      }
+    }
+
+    .timesTitle {
+      margin-bottom: 5px;
+    }
 
     .slot {
       margin: 10px;
+    }
+  }
+
+  .snackBar {
+    width: 100%;
+    max-width: 800px;
+
+    & > div {
+      color: #000000;
+      width: 100%;
+      background: #ffffff;
+    }
+
+    .clearDate {
+      margin-right: 10px;
+    }
+  }
+
+  .snackBarAlter {
+    width: 100%;
+    max-width: 800px;
+
+    .alert {
+      width: 100%;
+    }
+  }
+
+  .serviceCount {
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .serviceSecondaryCount {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 950px) {
+  .container {
+    .snackBar {
+      width: 80%;
+    }
+
+    .snackBarAlter {
+      width: 80%;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    .snackBar {
+      width: initial;
+    }
+
+    .snackBarAlter {
+      width: initial;
     }
   }
 }
