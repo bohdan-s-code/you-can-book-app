@@ -11,19 +11,20 @@ import {
   AppBar,
   Toolbar,
 } from '@material-ui/core';
-import { ImageOutlined } from '@material-ui/icons';
 import * as mockData from '../../core/mock-data';
 import CarouselSlider from '../../components/carousel-slider/carousel-slider';
 import { generateMapsLink } from '../../utils/generate-maps-link';
 import styles from './home-page.module.scss';
 import barberLogo from '../../assets/barber_logo.jpg';
+import placeOne from '../../assets/place1.jpg';
+import placeTwo from '../../assets/place2.jpg';
 
 const HomePage: FC = (): ReactElement => {
   return (
     <div className={styles.container}>
       <AppBar position="fixed" classes={{ root: styles.header }}>
         <Toolbar classes={{ root: styles.toolbar }}>
-          <img src={barberLogo} className={styles.logo} alt="logo"/>
+          <img src={barberLogo} className={styles.logo} alt="logo" />
           <Typography variant="h6">{mockData.BUSINESS_NAME}</Typography>
         </Toolbar>
       </AppBar>
@@ -43,9 +44,10 @@ const HomePage: FC = (): ReactElement => {
           <div className={styles.cards}>
             {mockData.businessData.map((service, index) => (
               <Card key={index} className={styles.card} elevation={3}>
-                <CardMedia classes={{ root: styles.cardMedia }}>
-                  <ImageOutlined style={{ fontSize: 200 }} />
-                </CardMedia>
+                <CardMedia
+                  className={styles.cardMedia}
+                  image={index === 0 ? placeOne : placeTwo}
+                />
                 <CardContent classes={{ root: styles.cardContent }}>
                   <div className={styles.contentText}>
                     <Typography variant="h6">{service.name}</Typography>

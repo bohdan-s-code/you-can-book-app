@@ -1,15 +1,48 @@
 import React, { FC, ReactElement } from 'react';
 import { Paper, Button } from '@material-ui/core';
 import { Formik, Form, Field } from 'formik';
+import NumberFormat from 'react-number-format';
 import { TextField } from 'formik-material-ui';
 import { bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { setNextStep } from '../../actions';
-import styles from './user-info-form.module.scss';
 import BookingSummary from '../booking-summary/booking-summary';
+import { userInfoSchema } from '../../core/validation-schema';
+import styles from './user-info-form.module.scss';
 
-const UserInfoForm: FC<UserInfoFormStateProps &
-  UserInfoFormDispatchProps> = ({}): ReactElement => {
+type CustomNumberFormatProps = {
+  name: string;
+  inputRef: (instance: NumberFormat | null) => void;
+  onChange: (event: { target: { name: string; value: string } }) => void;
+};
+
+const CustomNumberFormat = ({
+  inputRef,
+  onChange,
+  ...otherInputProps
+}: CustomNumberFormatProps): ReactElement => {
+  return (
+    <NumberFormat
+      {...otherInputProps}
+      allowEmptyFormatting
+      mask="_"
+      format="+38 (###) ### ####"
+      getInputRef={inputRef}
+      onValueChange={values => {
+        onChange({
+          target: {
+            name: otherInputProps.name,
+            value: values.value,
+          },
+        });
+      }}
+    />
+  );
+};
+
+const UserInfoForm: FC<UserInfoFormStateProps & UserInfoFormDispatchProps> = ({
+  setNextStep,
+}): ReactElement => {
   const initialValues: UserInfoFormInitialValues = {
     firstName: '',
     lastName: '',
@@ -21,9 +54,8 @@ const UserInfoForm: FC<UserInfoFormStateProps &
     <Paper className={styles.container}>
       <Formik
         initialValues={initialValues}
-        onSubmit={(values, actions) => {
-          console.log({ values, actions });
-        }}
+        validationSchema={userInfoSchema}
+        onSubmit={setNextStep}
       >
         <Form className={styles.userInfoForm}>
           <Field
@@ -51,6 +83,9 @@ const UserInfoForm: FC<UserInfoFormStateProps &
             type="text"
             label="Мобільний телефон"
             margin="dense"
+            InputProps={{
+              inputComponent: CustomNumberFormat as any,
+            }}
           />
           <Field
             component={TextField}
@@ -63,12 +98,7 @@ const UserInfoForm: FC<UserInfoFormStateProps &
 
           <BookingSummary />
 
-          <Button
-            type="submit"
-            variant="contained"
-            color="primary"
-            // onClick={setNextStep}
-          >
+          <Button type="submit" variant="contained" color="primary">
             Записатись
           </Button>
         </Form>

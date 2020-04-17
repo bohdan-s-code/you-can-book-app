@@ -1,14 +1,16 @@
 import React, { FC, ReactElement } from 'react';
 import { connect } from 'react-redux';
 import {
-  Button,
   List,
   ListItem,
   ListItemSecondaryAction,
   ListItemText,
   Typography,
   Divider,
+  IconButton,
+  Tooltip,
 } from '@material-ui/core';
+import { Edit } from '@material-ui/icons';
 import { formatDate } from '../../utils/date-utils';
 import {
   countSelectedServicesTotalPrice,
@@ -21,6 +23,7 @@ import {
   getServicesCheckedItems,
 } from '../../selectors';
 import { ServiceItem, Specialists, Timeslot } from '../../core/types';
+import styles from './booking-summary.module.scss';
 
 const BookingSummary: FC<BookingSummaryStateProps &
   BookingSummaryDispatchProps> = ({
@@ -31,45 +34,75 @@ const BookingSummary: FC<BookingSummaryStateProps &
 }): ReactElement => {
   return (
     <List>
-      <ListItem>
+      <ListItem className={styles.listItem}>
         <ListItemText>
-          <Typography variant="h6">Обрана дата:</Typography>
-          <Typography>
+          <Typography variant="h6" className={styles.textPrimary}>
+            Обрана дата:
+          </Typography>
+          <Typography
+            color="textSecondary"
+            variant="caption"
+            className={styles.textSecondary}
+          >
             {formatDate(selectedDate)}, {selectedTimeslots[0].value}
           </Typography>
         </ListItemText>
         <ListItemSecondaryAction>
-          <Button variant="outlined">Змінити дату</Button>
+          <Tooltip title="Змінити дату">
+            <IconButton edge="end">
+              <Edit />
+            </IconButton>
+          </Tooltip>
         </ListItemSecondaryAction>
       </ListItem>
 
       <Divider />
 
-      <ListItem>
+      <ListItem className={styles.listItem}>
         <ListItemText>
-          <Typography variant="h6">
+          <Typography variant="h6" className={styles.textPrimary}>
             Обрано послуг: {checkedServiceItems.length}
           </Typography>
-          <Typography>
+          <Typography
+            color="textSecondary"
+            variant="caption"
+            className={styles.textSecondary}
+          >
             Ціна: {countSelectedServicesTotalPrice(checkedServiceItems)}
             грн. | Тривалість:{' '}
             {countSelectedServicesTotalTime(checkedServiceItems)}
           </Typography>
         </ListItemText>
         <ListItemSecondaryAction>
-          <Button variant="outlined">Змінити послугу</Button>
+          <Tooltip title="Змінити послуги">
+            <IconButton edge="end">
+              <Edit />
+            </IconButton>
+          </Tooltip>
         </ListItemSecondaryAction>
       </ListItem>
 
       <Divider />
 
-      <ListItem>
+      <ListItem className={styles.listItem}>
         <ListItemText>
-          <Typography variant="h6">Обраний спеціаліст:</Typography>
-          <Typography>{selectedSpecialist[0].name}</Typography>
+          <Typography variant="h6" className={styles.textPrimary}>
+            Обраний спеціаліст:
+          </Typography>
+          <Typography
+            color="textSecondary"
+            variant="caption"
+            className={styles.textSecondary}
+          >
+            {selectedSpecialist[0].name}
+          </Typography>
         </ListItemText>
         <ListItemSecondaryAction>
-          <Button variant="outlined">Змінити спеціаліста</Button>
+          <Tooltip title="Змінити спеціаліста">
+            <IconButton edge="end">
+              <Edit />
+            </IconButton>
+          </Tooltip>
         </ListItemSecondaryAction>
       </ListItem>
     </List>

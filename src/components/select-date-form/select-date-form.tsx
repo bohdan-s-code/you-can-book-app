@@ -48,7 +48,11 @@ const SelectDateForm: FC<SelectDateFormDispatchProps &
           }}
         />
       </Paper>
-      <Paper className={styles.times} square>
+      <Paper
+        className={styles.times}
+        square
+        elevation={selectedTimeslots.length ? 1 : 10}
+      >
         <Typography variant="h6" className={styles.timesTitle}>
           Оберіть час візиту:
         </Typography>
