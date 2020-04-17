@@ -3,12 +3,15 @@ import {
   FormActionTypes,
   SELECT_SPECIALIST,
   SET_BOOKING_DATE,
+  SET_CUSTOM_STEP,
   SET_NEXT_STEP,
   SET_PREVIOUS_STEP,
   SET_SERVICE_CHECKED,
   SET_TIMESLOT_SELECTED,
+  StepperActionTypes,
   UNCHECK_ALL_SERVICES,
 } from './core/action-types';
+import { StepperSteps } from './core/enums';
 
 // BOOK_FORM
 export const setServiceChecked = (
@@ -34,19 +37,25 @@ export const setBookingDate = (date: Date): FormActionTypes => ({
   date,
 });
 
-export const setTimeslotSelected = (id: string) => ({
+export const setTimeslotSelected = (id: string): FormActionTypes => ({
   type: SET_TIMESLOT_SELECTED,
   id,
 });
 
-export const clearDateSelected = () => ({
+export const clearDateSelected = (): FormActionTypes => ({
   type: CLEAR_DATE_SELECTED,
 });
 
 // STEPPER
-export const setNextStep = () => ({
+export const setNextStep = (): StepperActionTypes => ({
   type: SET_NEXT_STEP,
 });
-export const setPreviousStep = () => ({
+
+export const setPreviousStep = (): StepperActionTypes => ({
   type: SET_PREVIOUS_STEP,
+});
+
+export const setCustomStep = (step: StepperSteps): StepperActionTypes => ({
+  type: SET_CUSTOM_STEP,
+  step,
 });

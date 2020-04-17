@@ -20,24 +20,8 @@ import { setPreviousStep } from '../../actions';
 import SuccessBookingPage from '../success-booking-page/success-booking-page';
 import { useWindowDimensions } from '../../hooks/useWindowDimensions';
 import { STEPPER_STEPS } from '../../core/mock-data';
+import { StepperSteps } from '../../core/enums';
 import styles from './book-form.module.scss';
-
-export const getStepContent = (step: number): null | ReactElement => {
-  switch (step) {
-    case 0:
-      return <SelectServiceForm />;
-    case 1:
-      return <SelectSpecialistForm />;
-    case 2:
-      return <SelectDateForm />;
-    case 3:
-      return <UserInfoForm />;
-    case 4:
-      return <SuccessBookingPage />;
-    default:
-      return null;
-  }
-};
 
 const BookForm: FC<BookFormProps> = ({
   step,
@@ -45,15 +29,32 @@ const BookForm: FC<BookFormProps> = ({
 }): ReactElement => {
   const { width } = useWindowDimensions();
 
+  const getStepContent = (): null | ReactElement => {
+    switch (step) {
+      case StepperSteps.Services:
+        return <SelectServiceForm />;
+      case StepperSteps.Specialists:
+        return <SelectSpecialistForm />;
+      case StepperSteps.DateForm:
+        return <SelectDateForm />;
+      case StepperSteps.UserInfo:
+        return <UserInfoForm />;
+      case StepperSteps.SuccessBooking:
+        return <SuccessBookingPage />;
+      default:
+        return null;
+    }
+  };
+
   const renderHeaderToolbarActions = (): ReactElement | null => {
     switch (step) {
-      case 0:
+      case StepperSteps.Services:
         return (
           <Button href="/" classes={{ root: styles.buttonBack }}>
             <ArrowBack />
           </Button>
         );
-      case 4:
+      case StepperSteps.SuccessBooking:
         return null;
       default:
         return (
@@ -88,7 +89,7 @@ const BookForm: FC<BookFormProps> = ({
             ))}
           </Stepper>
         ) : null}
-        {getStepContent(step)}
+        {getStepContent()}
       </main>
     </div>
   );

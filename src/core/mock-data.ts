@@ -13,7 +13,7 @@ export const STEPPER_STEPS = [
 
 export const businessData: BusinessData[] = [
   {
-    name: 'Назва Закладу #1',
+    name: 'Aldobarbers Barbershop',
     location: 'Львів, Князя Романа, 28',
     mapParams: { lat: 49.8373993, lng: 24.0320917, zoom: 17 },
     workHours: '9:00 - 20:00',
@@ -24,7 +24,7 @@ export const businessData: BusinessData[] = [
       'https://www.google.com/maps/place/Solidol+Barbershop/@49.8503658,24.0201567,17z/data=!4m15!1m7!3m6!1s0x473add0a524a99a7:0x4f6e3e2da2da2f66!2z0LLRg9C70LjRhtGPINCf0ZbQtCDQlNGD0LHQvtC8LCA3LCDQm9GM0LLRltCyLCDQm9GM0LLRltCy0YHRjNC60LAg0L7QsdC70LDRgdGC0YwsIDc5MDAw!3b1!8m2!3d49.8502958!4d24.022357!3m6!1s0x473add0a51ff8a77:0xea42fcc139efdbb7!8m2!3d49.8503624!4d24.0223454!9m1!1b1',
   },
   {
-    name: 'Назва Закладу #2',
+    name: 'Aldobarbers Barbershop',
     location: 'Львів, вулиця Під Дубом 7',
     mapParams: { lat: 49.8502958, lng: 24.0201683, zoom: 17 },
     workHours: '10:00 - 21:00',

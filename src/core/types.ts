@@ -1,3 +1,5 @@
+import { StepperSteps } from './enums';
+
 export interface GoogleMapsSearchParams {
   lat: number;
   lng: number;
@@ -37,7 +39,7 @@ export interface FormState {
 }
 
 export interface StepperState {
-  step: number;
+  step: StepperSteps;
 }
 
 export interface Specialists {

@@ -1,4 +1,6 @@
 // BOOK_FORM
+import { StepperSteps } from './enums';
+
 export const SET_SERVICE_CHECKED = 'SET_SERVICE_CHECKED';
 export const UNCHECK_ALL_SERVICES = 'UNCHECK_ALL_SERVICES';
 export const SELECT_SPECIALIST = 'SELECT_SPECIALIST';
@@ -46,6 +48,7 @@ export type FormActionTypes =
 // STEPPER
 export const SET_NEXT_STEP = 'SET_NEXT_STEP';
 export const SET_PREVIOUS_STEP = 'SET_PREVIOUS_STEP';
+export const SET_CUSTOM_STEP = 'SET_CUSTOM_STEP';
 
 export type SetNextStep = {
   type: typeof SET_NEXT_STEP;
@@ -55,4 +58,9 @@ export type SetPreviousStep = {
   type: typeof SET_PREVIOUS_STEP;
 };
 
-export type StepperActionTypes = SetNextStep | SetPreviousStep;
+export type SetCustomStep = {
+  type: typeof SET_CUSTOM_STEP;
+  step: StepperSteps;
+};
+
+export type StepperActionTypes = SetNextStep | SetPreviousStep | SetCustomStep;
