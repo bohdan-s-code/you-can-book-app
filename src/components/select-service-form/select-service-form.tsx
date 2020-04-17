@@ -1,12 +1,15 @@
-import React, { FC, ReactElement } from 'react';
+import React, { ChangeEvent, FC, ReactElement, useState } from 'react';
 import { connect } from 'react-redux';
 import {
   Button,
+  InputAdornment,
   List,
   Snackbar,
   TextField,
   Typography,
+  IconButton,
 } from '@material-ui/core';
+import { Clear, Search } from '@material-ui/icons';
 import CollapseListItem from '../collapse-list-item/collapse-list-item';
 import { ServiceItem, ServicesFormData } from '../../core/types';
 import { AppState } from '../../reducers';
@@ -15,6 +18,7 @@ import { getServicesCheckedItems } from '../../selectors';
 import { bindActionCreators, Dispatch } from 'redux';
 import { setNextStep, uncheckAllServices } from '../../actions';
 import styles from './select-service-form.module.scss';
+import { servicesSearch } from '../../utils/services-utils';
 
 const SelectServiceForm: FC<SelectServiceFormStateProps &
   SelectServiceFormDispatchProps> = ({
@@ -23,6 +27,8 @@ const SelectServiceForm: FC<SelectServiceFormStateProps &
   uncheckAllServices,
   setNextStep,
 }): ReactElement => {
+  const [searchValue, setSearchValue] = useState('');
+
   const countTotalPrice = (): number =>
     checkedServiceItems.reduce((a, b) => {
       return a + b.price;
@@ -33,16 +39,40 @@ const SelectServiceForm: FC<SelectServiceFormStateProps &
       return a + b.time;
     }, 0);
 
+  const handleSearchChange = (event: ChangeEvent<HTMLInputElement>): void => {
+    event.preventDefault();
+    setSearchValue(event.target.value);
+  };
+
+  const clearSearch = (): void => {
+    setSearchValue('');
+  };
+
   return (
     <div className={styles.container}>
       <TextField
+        value={searchValue}
         id="outlined-basic"
         placeholder="Search"
         variant="outlined"
         className={styles.searchField}
+        onChange={handleSearchChange}
+        InputProps={{
+          endAdornment: (
+            <InputAdornment position="end">
+              {searchValue ? (
+                <IconButton edge="end" onClick={clearSearch}>
+                  <Clear />
+                </IconButton>
+              ) : (
+                <Search />
+              )}
+            </InputAdornment>
+          ),
+        }}
       />
       <List component="nav" aria-labelledby="nested-list-subheader">
-        {services.map(
+        {servicesSearch(services, searchValue).map(
           (service): ReactElement => (
             <CollapseListItem key={service.id} service={service} />
           )
@@ -67,11 +97,11 @@ const SelectServiceForm: FC<SelectServiceFormStateProps &
           </div>
         }
         action={
-          <div className={styles.snackBarActions}>
+          <div>
             <Button
               variant="outlined"
               onClick={uncheckAllServices}
-              style={{ marginRight: '10px' }}
+              classes={{ root: styles.snackBarActionClear }}
             >
               Очистити вибір <DeleteForever />
             </Button>

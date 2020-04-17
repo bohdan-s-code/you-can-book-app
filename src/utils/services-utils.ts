@@ -52,3 +52,18 @@ export const unselectTimeslot = (timeSlots: Timeslot[]): Timeslot[] => {
     timeslot.selected ? { ...timeslot, selected: false } : timeslot
   );
 };
+
+export const servicesSearch = (
+  services: ServicesFormData[],
+  searchCriteria: string
+): ServicesFormData[] => {
+  return services.map(service => ({
+    ...service,
+    items: service.items.filter(
+      item =>
+        item.label
+          .toLocaleLowerCase()
+          .indexOf(searchCriteria.toLocaleLowerCase()) !== -1
+    ),
+  }));
+};

@@ -1,5 +1,6 @@
 import React, { FC, ReactElement } from 'react';
 import { Paper, Typography, Button, Snackbar } from '@material-ui/core';
+import { DeleteForever } from '@material-ui/icons';
 import { Alert } from '@material-ui/lab';
 import { DatePicker } from '@material-ui/pickers';
 import { bindActionCreators, Dispatch } from 'redux';
@@ -10,12 +11,11 @@ import {
   setNextStep,
   setTimeslotSelected,
 } from '../../actions';
-import styles from './select-date-form.module.scss';
 import { AppState } from '../../reducers';
 import { Timeslot } from '../../core/types';
 import { formatDate } from '../../utils/date-utils';
-import { DeleteForever } from '@material-ui/icons';
 import { getSelectedTimeslots } from '../../selectors';
+import styles from './select-date-form.module.scss';
 
 const SelectDateForm: FC<SelectDateFormDispatchProps &
   SelectDateFormStateProps> = ({
