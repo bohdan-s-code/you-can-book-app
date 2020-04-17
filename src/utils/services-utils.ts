@@ -1,5 +1,10 @@
 import { findIndex } from 'lodash';
-import { ServicesFormData, Specialists, Timeslot } from '../core/types';
+import {
+  ServiceItem,
+  ServicesFormData,
+  Specialists,
+  Timeslot,
+} from '../core/types';
 
 export const setServiceItemChecked = (
   services: ServicesFormData[],
@@ -66,4 +71,16 @@ export const servicesSearch = (
           .indexOf(searchCriteria.toLocaleLowerCase()) !== -1
     ),
   }));
+};
+
+export const countSelectedServicesTotalPrice = (
+  selectedServices: ServiceItem[]
+): number => {
+  return selectedServices.reduce((a, b) => a + b.price, 0);
+};
+
+export const countSelectedServicesTotalTime = (
+  selectedServices: ServiceItem[]
+): number => {
+  return selectedServices.reduce((a, b) => a + b.time, 0);
 };

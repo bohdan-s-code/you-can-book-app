@@ -12,6 +12,7 @@ export interface BusinessData {
   photo: string;
   rating: string;
   numberOfReviews: number;
+  reviewsLink: string;
 }
 
 export interface ServiceItem {

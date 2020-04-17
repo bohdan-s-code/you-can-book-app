@@ -1,12 +1,23 @@
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-bottom: 1px solid #000000;
+.container {
+  .header {
+    bottom: auto;
+    top: 0;
+    background: #ffffff;
+    color: #000000;
 
-  .logo {
-    font-size: 40px;
-    margin-right: 10px;
+    .toolbar {
+      display: flex;
+      justify-content: center;
+    }
+
+    .logo {
+      height: 60px;
+      width: auto;
+    }
+  }
+
+  .mainContent {
+    margin-top: 75px;
   }
 }
 
@@ -58,10 +69,16 @@
   }
 
   .rating {
+    display: flex;
+    flex-direction: column;
     order: 2;
     align-self: center;
     margin-left: auto;
     text-align: right;
+
+    .reviewLink {
+      color: #000000;
+    }
   }
 }
 
@@ -84,6 +101,10 @@
 @media screen and (max-width: 550px) {
   .cardContent {
     flex-direction: column;
+
+    .rating {
+      flex-direction: row;
+    }
   }
 
   .card {

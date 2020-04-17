@@ -6,10 +6,10 @@ import { bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { setNextStep } from '../../actions';
 import styles from './user-info-form.module.scss';
+import BookingSummary from '../booking-summary/booking-summary';
 
-const UserInfoForm: FC<UserInfoFormStateProps & UserInfoFormDispatchProps> = ({
-  setNextStep,
-}): ReactElement => {
+const UserInfoForm: FC<UserInfoFormStateProps &
+  UserInfoFormDispatchProps> = ({}): ReactElement => {
   const initialValues: UserInfoFormInitialValues = {
     firstName: '',
     lastName: '',
@@ -60,11 +60,14 @@ const UserInfoForm: FC<UserInfoFormStateProps & UserInfoFormDispatchProps> = ({
             label="Електронна пошта"
             margin="dense"
           />
+
+          <BookingSummary />
+
           <Button
             type="submit"
             variant="contained"
             color="primary"
-            onClick={setNextStep}
+            // onClick={setNextStep}
           >
             Записатись
           </Button>

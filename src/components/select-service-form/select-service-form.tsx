@@ -18,7 +18,11 @@ import { getServicesCheckedItems } from '../../selectors';
 import { bindActionCreators, Dispatch } from 'redux';
 import { setNextStep, uncheckAllServices } from '../../actions';
 import styles from './select-service-form.module.scss';
-import { servicesSearch } from '../../utils/services-utils';
+import {
+  countSelectedServicesTotalPrice,
+  countSelectedServicesTotalTime,
+  servicesSearch,
+} from '../../utils/services-utils';
 
 const SelectServiceForm: FC<SelectServiceFormStateProps &
   SelectServiceFormDispatchProps> = ({
@@ -30,14 +34,10 @@ const SelectServiceForm: FC<SelectServiceFormStateProps &
   const [searchValue, setSearchValue] = useState('');
 
   const countTotalPrice = (): number =>
-    checkedServiceItems.reduce((a, b) => {
-      return a + b.price;
-    }, 0);
+    countSelectedServicesTotalPrice(checkedServiceItems);
 
   const countTotalDuration = (): number =>
-    checkedServiceItems.reduce((a, b) => {
-      return a + b.time;
-    }, 0);
+    countSelectedServicesTotalTime(checkedServiceItems);
 
   const handleSearchChange = (event: ChangeEvent<HTMLInputElement>): void => {
     event.preventDefault();
@@ -85,7 +85,7 @@ const SelectServiceForm: FC<SelectServiceFormStateProps &
         message={
           <div>
             <Typography variant="h6" className={styles.serviceCount}>
-              Обрана дата і час: {checkedServiceItems.length}
+              Обрано пос: {checkedServiceItems.length}
             </Typography>
             <Typography
               color="textSecondary"

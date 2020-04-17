@@ -9,15 +9,13 @@ const CarouselSlider: FC<CarouselSliderProps> = ({
   ...carouselProps
 }): ReactElement => {
   return (
-    <div>
-      <Carousel {...carouselProps}>
-        {adverts.map((advert, index) => (
-          <Paper key={index} elevation={3} className={styles.papers}>
-            {advert}
-          </Paper>
-        ))}
-      </Carousel>
-    </div>
+    <Carousel {...carouselProps}>
+      {adverts.map((advert, index) => (
+        <Paper key={index} elevation={3} className={styles.papers}>
+          {advert}
+        </Paper>
+      ))}
+    </Carousel>
   );
 };
 
