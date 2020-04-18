@@ -1,0 +1,101 @@
+.cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  .card {
+    display: flex;
+    min-width: 320px;
+    flex: 1 1 calc(50% - 20px);
+    flex-direction: column;
+    margin: 10px;
+
+    &.book {
+      margin-top: auto;
+      align-self: flex-end;
+    }
+
+    .bookButton {
+      border-radius: 0;
+    }
+
+    .cardMedia {
+      height: 0;
+      padding-top: 60%;
+    }
+
+    .cardContent {
+      display: flex;
+
+      .workingHours {
+        flex-grow: 1;
+      }
+
+      .contentText {
+        order: 1;
+      }
+
+      .link {
+        display: table-cell;
+      }
+
+      .rating {
+        display: flex;
+        flex-direction: column;
+        order: 2;
+        align-self: center;
+        margin-left: auto;
+        text-align: right;
+
+        .reviewLink {
+          color: #000000;
+        }
+      }
+
+      .ratingChip {
+        font-size: 18px !important;
+        font-weight: 500;
+        margin-left: auto;
+      }
+    }
+  }
+}
+@media screen and (max-width: 800px) {
+  .cards {
+    .card {
+      flex-basis: 95%;
+    }
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .cards {
+    .card {
+      flex-basis: 95%;
+
+      .cardContent {
+        flex-direction: column;
+
+        .contentText {
+          order: 2;
+        }
+
+        .rating {
+          flex-direction: row;
+          display: flex;
+          align-items: center;
+          order: 1;
+          margin-bottom: 10px;
+          align-self: flex-start;
+          margin-left: initial;
+          text-align: left;
+        }
+
+        .ratingChip {
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+}

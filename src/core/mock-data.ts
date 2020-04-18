@@ -1,6 +1,10 @@
 import { v4 as uuidv4 } from 'uuid';
 import { BusinessData, ServicesFormData, Specialists, Timeslot } from './types';
 import placeOne from '../assets/place1.jpg';
+import placeTwo from '../assets/place2.jpg';
+import aboutUsImage1 from '../assets/aboutUsImage1.jpg';
+import aboutUsImage2 from '../assets/aboutUsImage2.jpg';
+import aboutUsImage3 from '../assets/aboutUsImage3.jpg';
 
 export const BUSINESS_NAME = 'ALDOBARBERS';
 
@@ -28,7 +32,7 @@ export const businessData: BusinessData[] = [
     location: 'Львів, вулиця Під Дубом 7',
     mapParams: { lat: 49.8502958, lng: 24.0201683, zoom: 17 },
     workHours: '10:00 - 21:00',
-    photo: placeOne,
+    photo: placeTwo,
     rating: '4.7',
     numberOfReviews: 437,
     reviewsLink:
@@ -36,7 +40,15 @@ export const businessData: BusinessData[] = [
   },
 ];
 
-export const adverts: string[] = ['Акції %', 'Акції %'];
+export const aboutUsContent = {
+  photos: [aboutUsImage1, aboutUsImage2, aboutUsImage3],
+};
+
+export const aboutUsText = {
+  title: 'Aldobarbers',
+  content:
+    'Барбершоп з якого 15 березня 2014 року почалася історія\nрозвитку культури стрижок в Україні.У січні 2015 року, ми відкрили наш перший Барбершоп\nALDOBARBERS в маленькому підвальчику в центрі Києва. Замість дорогих\nперукарень крісел, ми створили свої - автомобільні. У нас зовсім не\nбуло грошей але були великі амбіції і сильні майстри. У 2017 році ми\nпереїхали в двоповерхове приміщення в історичному центрі Києва, а в\n2019 році відкрили Арт-Барбершоп в центрі Одеси. Тепер у нас 36\nвипусків з 18 країн про кращих Барбера і барбершопах на YouTube.\n  Міжнародна школа Барбера, в якій щорічно навчаються 147 абітурієнтів з\n27 країн, дипломовані майстри міжнародного класу, і як на самому\nпочатку шляху великі амбіції.',
+};
 
 export const servicesFormData: ServicesFormData[] = [
   {

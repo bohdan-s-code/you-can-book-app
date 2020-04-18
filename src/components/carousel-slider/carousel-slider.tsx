@@ -12,7 +12,7 @@ const CarouselSlider: FC<CarouselSliderProps> = ({
     <Carousel {...carouselProps}>
       {adverts.map((advert, index) => (
         <Paper key={index} elevation={3} className={styles.papers}>
-          {advert}
+          <img src={advert} style={{ width: '100%' }} alt="photos" />
         </Paper>
       ))}
     </Carousel>
