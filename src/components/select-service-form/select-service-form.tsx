@@ -50,7 +50,10 @@ const SelectServiceForm: FC<SelectServiceFormStateProps &
   };
 
   return (
-    <div className={styles.container}>
+    <div
+      className={styles.container}
+      style={{ marginBottom: !!checkedServiceItems.length ? '120px' : 0 }}
+    >
       <TextField
         value={searchValue}
         id="outlined-basic"

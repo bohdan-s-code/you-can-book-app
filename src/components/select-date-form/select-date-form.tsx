@@ -88,7 +88,10 @@ const SelectDateForm: FC<SelectDateFormDispatchProps &
   };
 
   return (
-    <div className={styles.container}>
+    <div
+      className={styles.container}
+      style={{ marginBottom: width <= 600 ? '100px' : 0 }}
+    >
       <Paper className={styles.picker} square elevation={showTime ? 1 : 15}>
         <DatePicker
           autoOk
