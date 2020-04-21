@@ -1,14 +1,20 @@
 import { FormState } from '../core/types';
 import {
-  FormActionTypes,
   CLEAR_DATE_SELECTED,
+  FormActionTypes,
   SELECT_SPECIALIST,
   SET_BOOKING_DATE,
   SET_SERVICE_CHECKED,
   SET_TIMESLOT_SELECTED,
+  SET_USER_INFO_VALUES,
   UNCHECK_ALL_SERVICES,
 } from '../core/action-types';
-import { servicesFormData, specialists, timeSlots } from '../core/mock-data';
+import {
+  servicesFormData,
+  specialists,
+  timeSlots,
+  userInfoInitialFormValues,
+} from '../core/mock-data';
 import {
   setServiceItemChecked,
   setSpecialistSelected,
@@ -21,6 +27,7 @@ const initialState: FormState = {
   specialists: specialists,
   selectedDate: new Date(),
   timeSlots: timeSlots,
+  userInfo: userInfoInitialFormValues,
 };
 
 export const servicesReducer = (
@@ -59,6 +66,11 @@ export const servicesReducer = (
         ...state,
         selectedDate: new Date(),
         timeSlots: unselectTimeslot(state.timeSlots),
+      };
+    case SET_USER_INFO_VALUES:
+      return {
+        ...state,
+        userInfo: action.payload,
       };
     default:
       return state;

@@ -343,3 +343,11 @@ export const timeSlots: Timeslot[] = [
   { id: uuidv4(), value: '18:30', selected: false },
   { id: uuidv4(), value: '19:00', selected: false },
 ];
+
+export const userInfoInitialFormValues = {
+  name: '',
+  phoneNumber: '',
+  callBack: false,
+  email: '',
+  comment: '',
+};

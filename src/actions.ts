@@ -8,10 +8,12 @@ import {
   SET_PREVIOUS_STEP,
   SET_SERVICE_CHECKED,
   SET_TIMESLOT_SELECTED,
+  SET_USER_INFO_VALUES,
   StepperActionTypes,
   UNCHECK_ALL_SERVICES,
 } from './core/action-types';
 import { StepperSteps } from './core/enums';
+import { UserInfoFormValues } from './core/types';
 
 // BOOK_FORM
 export const setServiceChecked = (
@@ -44,6 +46,13 @@ export const setTimeslotSelected = (id: string): FormActionTypes => ({
 
 export const clearDateSelected = (): FormActionTypes => ({
   type: CLEAR_DATE_SELECTED,
+});
+
+export const setUserInfoValues = (
+  formValues: UserInfoFormValues
+): FormActionTypes => ({
+  type: SET_USER_INFO_VALUES,
+  payload: formValues,
 });
 
 // STEPPER

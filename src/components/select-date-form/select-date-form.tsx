@@ -1,5 +1,5 @@
-import React, { FC, ReactElement } from 'react';
-import { Paper, Typography, Button, Snackbar } from '@material-ui/core';
+import React, { FC, ReactElement, useState } from 'react';
+import { Paper, Typography, Button, Snackbar, Slide } from '@material-ui/core';
 import { DeleteForever } from '@material-ui/icons';
 import { Alert } from '@material-ui/lab';
 import { DatePicker } from '@material-ui/pickers';
@@ -28,13 +28,21 @@ const SelectDateForm: FC<SelectDateFormDispatchProps &
   clearDateSelected,
   setNextStep,
 }): ReactElement => {
+  const [showTime, setShowTime] = useState(!!selectedTimeslots.length);
+
   const handleDatePickerChange = (date: any): void => {
     setBookingDate(new Date(date));
+    setShowTime(true);
+  };
+
+  const handleClearDate = (): void => {
+    clearDateSelected();
+    setShowTime(false);
   };
 
   return (
     <div className={styles.container}>
-      <Paper className={styles.picker} square>
+      <Paper className={styles.picker} square elevation={showTime ? 1 : 15}>
         <DatePicker
           autoOk
           orientation="portrait"
@@ -48,30 +56,34 @@ const SelectDateForm: FC<SelectDateFormDispatchProps &
           }}
         />
       </Paper>
-      <Paper
-        className={styles.times}
-        square
-        elevation={selectedTimeslots.length ? 1 : 10}
-      >
-        <Typography variant="h6" className={styles.timesTitle}>
-          Оберіть час візиту:
-        </Typography>
-        <div className={styles.timeSlots}>
-          {timeSlots.map(({ id, value, selected }) => (
-            <Button
-              key={id}
-              color={selected ? 'primary' : 'default'}
-              variant={selected ? 'contained' : 'outlined'}
-              classes={{ root: styles.item }}
-              onClick={(): void => {
-                setTimeslotSelected(id);
-              }}
-            >
-              {value}
-            </Button>
-          ))}
-        </div>
-      </Paper>
+      {showTime ? (
+        <Slide direction="up" in={showTime}>
+          <Paper
+            className={styles.times}
+            square
+            elevation={selectedTimeslots.length ? 1 : 15}
+          >
+            <Typography variant="h6" className={styles.timesTitle}>
+              Оберіть час візиту:
+            </Typography>
+            <div className={styles.timeSlots}>
+              {timeSlots.map(({ id, value, selected }) => (
+                <Button
+                  key={id}
+                  color={selected ? 'primary' : 'default'}
+                  variant={selected ? 'contained' : 'outlined'}
+                  classes={{ root: styles.item }}
+                  onClick={(): void => {
+                    setTimeslotSelected(id);
+                  }}
+                >
+                  {value}
+                </Button>
+              ))}
+            </div>
+          </Paper>
+        </Slide>
+      ) : null}
       {selectedTimeslots.length ? (
         <Snackbar
           anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
@@ -96,7 +108,7 @@ const SelectDateForm: FC<SelectDateFormDispatchProps &
             <div>
               <Button
                 variant="outlined"
-                onClick={clearDateSelected}
+                onClick={handleClearDate}
                 classes={{ root: styles.clearDate }}
               >
                 Очистити вибір <DeleteForever />

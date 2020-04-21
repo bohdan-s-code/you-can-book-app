@@ -1,7 +1,6 @@
 import React, { FC, ReactElement } from 'react';
 import { connect } from 'react-redux';
 import {
-  Divider,
   IconButton,
   List,
   ListItem,
@@ -50,7 +49,7 @@ const BookingSummary: FC<BookingSummaryStateProps &
 
   return (
     <List>
-      <ListItem className={styles.listItem}>
+      <ListItem className={styles.listItem} divider>
         <ListItemText>
           <Typography variant="h6" className={styles.textPrimary}>
             Обрана дата:
@@ -72,9 +71,7 @@ const BookingSummary: FC<BookingSummaryStateProps &
         </ListItemSecondaryAction>
       </ListItem>
 
-      <Divider />
-
-      <ListItem className={styles.listItem}>
+      <ListItem className={styles.listItem} divider>
         <ListItemText>
           <Typography variant="h6" className={styles.textPrimary}>
             Обрано послуг: {checkedServiceItems.length}
@@ -97,8 +94,6 @@ const BookingSummary: FC<BookingSummaryStateProps &
           </Tooltip>
         </ListItemSecondaryAction>
       </ListItem>
-
-      <Divider />
 
       <ListItem className={styles.listItem}>
         <ListItemText>

@@ -36,6 +36,7 @@ export interface FormState {
   specialists: Specialists[];
   selectedDate: Date;
   timeSlots: Timeslot[];
+  userInfo: UserInfoFormValues;
 }
 
 export interface StepperState {
@@ -58,6 +59,14 @@ export type Timeslot = {
   id: string;
   value: string;
   selected: boolean;
+};
+
+export type UserInfoFormValues = {
+  name: string;
+  phoneNumber: string;
+  callBack: boolean;
+  email: string;
+  comment: string;
 };
 
 export type SocialNetwork = {

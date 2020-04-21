@@ -1,13 +1,15 @@
 import React, { FC, ReactElement } from 'react';
 import { Paper, Button } from '@material-ui/core';
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form, Field, FormikHelpers } from 'formik';
 import NumberFormat from 'react-number-format';
-import { TextField } from 'formik-material-ui';
+import { TextField, CheckboxWithLabel } from 'formik-material-ui';
 import { bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
-import { setNextStep } from '../../actions';
+import { setNextStep, setUserInfoValues } from '../../actions';
 import BookingSummary from '../booking-summary/booking-summary';
 import { userInfoSchema } from '../../core/validation-schema';
+import { UserInfoFormValues } from '../../core/types';
+import { AppState } from '../../reducers';
 import styles from './user-info-form.module.scss';
 
 type CustomNumberFormatProps = {
@@ -42,36 +44,32 @@ const CustomNumberFormat = ({
 
 const UserInfoForm: FC<UserInfoFormStateProps & UserInfoFormDispatchProps> = ({
   setNextStep,
+  userInfo,
+  setUserInfoValues,
 }): ReactElement => {
-  const initialValues: UserInfoFormInitialValues = {
-    firstName: '',
-    lastName: '',
-    phoneNumber: '',
-    email: '',
+  const handleSubmit = (
+    values: UserInfoFormValues,
+    formikHelpers: FormikHelpers<any>
+  ): void => {
+    setUserInfoValues(values);
+    setNextStep();
+    formikHelpers.setSubmitting(false);
   };
 
   return (
     <Paper className={styles.container}>
       <Formik
-        initialValues={initialValues}
+        initialValues={userInfo}
         validationSchema={userInfoSchema}
-        onSubmit={setNextStep}
+        onSubmit={handleSubmit}
       >
         <Form className={styles.userInfoForm}>
           <Field
             component={TextField}
             variant="outlined"
-            name="firstName"
+            name="name"
             type="text"
             label="Ім'я"
-            margin="dense"
-          />
-          <Field
-            component={TextField}
-            variant="outlined"
-            name="lastName"
-            type="text"
-            label="Прізвище"
             margin="dense"
           />
           <Field
@@ -86,11 +84,27 @@ const UserInfoForm: FC<UserInfoFormStateProps & UserInfoFormDispatchProps> = ({
             }}
           />
           <Field
+            type="checkbox"
+            component={CheckboxWithLabel}
+            name="callBack"
+            Label={{ label: 'Нагадайте дзвінком за день до зустрічі' }}
+          />
+          <Field
             component={TextField}
             variant="outlined"
             name="email"
             type="email"
             label="Електронна пошта"
+            margin="dense"
+          />
+          <Field
+            multiline
+            rows={4}
+            component={TextField}
+            variant="outlined"
+            name="comment"
+            type="text"
+            label="Додаткові коментарі"
             margin="dense"
           />
 
@@ -105,22 +119,20 @@ const UserInfoForm: FC<UserInfoFormStateProps & UserInfoFormDispatchProps> = ({
   );
 };
 
-type UserInfoFormInitialValues = {
-  firstName: string;
-  lastName: string;
-  phoneNumber: string;
-  email: string;
+type UserInfoFormStateProps = {
+  userInfo: UserInfoFormValues;
 };
-
-type UserInfoFormStateProps = {};
 
 type UserInfoFormDispatchProps = {
   setNextStep: () => void;
+  setUserInfoValues: (formValues: UserInfoFormValues) => void;
 };
 
-const mapStateToProps = (): UserInfoFormStateProps => ({});
+const mapStateToProps = (state: AppState): UserInfoFormStateProps => ({
+  userInfo: state.form.userInfo,
+});
 
 const mapDispatchToProps = (dispatch: Dispatch): UserInfoFormDispatchProps =>
-  bindActionCreators({ setNextStep }, dispatch);
+  bindActionCreators({ setNextStep, setUserInfoValues }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserInfoForm);

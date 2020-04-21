@@ -5,16 +5,17 @@ const phoneRegExp = new RegExp(
 );
 
 export const userInfoSchema = Yup.object().shape({
-  firstName: Yup.string()
+  name: Yup.string()
     .required("Введіть ім'я")
     .min(1)
     .max(25),
-  lastName: Yup.string(),
   phoneNumber: Yup.string()
     .required('Введіть номер телефону')
     .matches(
       phoneRegExp,
       'Введіть номер телефону у форматі +38 (###) ### ####'
     ),
-  email: Yup.string().email(),
+  callBack: Yup.boolean(),
+  email: Yup.string().email('Введіть правильну адресу електронної пошти'),
+  comment: Yup.string(),
 });
