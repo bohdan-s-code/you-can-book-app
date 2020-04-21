@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, useState } from 'react';
+import React, { FC, ReactElement, useState, useRef } from 'react';
 import { Paper, Typography, Button, Snackbar, Slide } from '@material-ui/core';
 import { DeleteForever } from '@material-ui/icons';
 import { Alert } from '@material-ui/lab';
@@ -29,8 +29,10 @@ const SelectDateForm: FC<SelectDateFormDispatchProps &
   setNextStep,
 }): ReactElement => {
   const [showTime, setShowTime] = useState(!!selectedTimeslots.length);
+  const myRef = useRef<null | HTMLDivElement>(null);
 
   const handleDatePickerChange = (date: any): void => {
+    if (myRef.current) myRef.current.scrollIntoView({ behavior: 'smooth' });
     setBookingDate(new Date(date));
     setShowTime(true);
   };
@@ -41,7 +43,7 @@ const SelectDateForm: FC<SelectDateFormDispatchProps &
   };
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} ref={myRef}>
       <Paper className={styles.picker} square elevation={showTime ? 1 : 15}>
         <DatePicker
           autoOk
