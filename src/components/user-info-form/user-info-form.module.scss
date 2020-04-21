@@ -5,4 +5,10 @@
     display: flex;
     flex-direction: column;
   }
+
+  .checkbox {
+    & > span {
+      font-size: 13.5px;
+    }
+  }
 }

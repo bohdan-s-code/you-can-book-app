@@ -87,7 +87,10 @@ const UserInfoForm: FC<UserInfoFormStateProps & UserInfoFormDispatchProps> = ({
             type="checkbox"
             component={CheckboxWithLabel}
             name="callBack"
-            Label={{ label: 'Нагадайте дзвінком за день до зустрічі' }}
+            Label={{
+              label: 'Нагадайте дзвінком за день до зустрічі',
+              classes: { root: styles.checkbox },
+            }}
           />
           <Field
             component={TextField}

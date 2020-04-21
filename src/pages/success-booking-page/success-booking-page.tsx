@@ -30,10 +30,10 @@ const SuccessBookingPage: FC<SuccessBookingPageStateProps &
               <Typography
                 component="span"
                 variant="subtitle2"
-                color="secondary"
+                color="textSecondary"
                 className={styles.secondary}
               >
-                Чекаємо вас:{' '}
+                Чекаємо вас:
               </Typography>
               <Typography component="span" className={styles.important}>
                 {formatDate(selectedDate)} о {selectedTimeslot[0].value}
