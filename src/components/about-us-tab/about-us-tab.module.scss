@@ -1,5 +1,9 @@
 .container {
   padding: 10px;
+
+  .title {
+    font-size: 18px;
+  }
 }
 
 @media screen and (max-width: 550px) {

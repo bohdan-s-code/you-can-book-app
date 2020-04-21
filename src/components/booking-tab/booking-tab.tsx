@@ -6,6 +6,7 @@ import {
   CardMedia,
   Chip,
   Link,
+  Tooltip,
   Typography,
 } from '@material-ui/core';
 import * as mockData from '../../core/mock-data';
@@ -21,13 +22,15 @@ const BookingTab: FC = (): ReactElement => {
           <CardContent classes={{ root: styles.cardContent }}>
             <div className={styles.contentText}>
               <Typography variant="h6">{service.name}</Typography>
-              <Link
-                className={styles.link}
-                href={generateMapsLink(service.mapParams, service.location)}
-                target="_blank"
-              >
-                {service.location}
-              </Link>
+              <Tooltip title="Показати на карті">
+                <Link
+                  className={styles.link}
+                  href={generateMapsLink(service.mapParams, service.location)}
+                  target="_blank"
+                >
+                  {service.location}
+                </Link>
+              </Tooltip>
               <Typography variant="subtitle1" className={styles.workingHours}>
                 {service.workHours}
               </Typography>
@@ -37,13 +40,15 @@ const BookingTab: FC = (): ReactElement => {
                 label={service.rating}
                 classes={{ root: styles.ratingChip }}
               />
-              <Link
-                target="_blank"
-                href={service.reviewsLink}
-                className={styles.reviewLink}
-              >
-                {service.numberOfReviews} відгуків
-              </Link>
+              <Tooltip title="Подивитись відгуки">
+                <Link
+                  target="_blank"
+                  href={service.reviewsLink}
+                  className={styles.reviewLink}
+                >
+                  {service.numberOfReviews} відгуків
+                </Link>
+              </Tooltip>
             </div>
           </CardContent>
           <Button

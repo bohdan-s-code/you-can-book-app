@@ -6,8 +6,14 @@
 
     .toolbar {
       display: flex;
+      flex-direction: column;
       justify-content: center;
       position: relative;
+
+      .logo {
+        height: 50px;
+        width: auto;
+      }
 
       .buttonBack {
         position: absolute;
@@ -22,6 +28,8 @@
 }
 
 .title {
+  text-align: center;
   color: #000000;
   margin: 0 auto;
+  font-size: 14px;
 }

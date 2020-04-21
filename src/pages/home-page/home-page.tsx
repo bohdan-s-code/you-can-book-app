@@ -5,6 +5,7 @@ import BookingTab from '../../components/booking-tab/booking-tab';
 import styles from './home-page.module.scss';
 import barberLogo from '../../assets/barber_logo.jpg';
 import AboutUsTab from '../../components/about-us-tab/about-us-tab';
+import ContactsTab from '../../components/contacts-tab/contacts-tab';
 
 const HomePage: FC = (): ReactElement => {
   const [tabValue, setTabValue] = useState(0);
@@ -22,6 +23,8 @@ const HomePage: FC = (): ReactElement => {
         return <BookingTab />;
       case 1:
         return <AboutUsTab />;
+      case 2:
+        return <ContactsTab />;
       default:
         return null;
     }

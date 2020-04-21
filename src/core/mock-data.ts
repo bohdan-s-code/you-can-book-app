@@ -1,5 +1,12 @@
 import { v4 as uuidv4 } from 'uuid';
-import { BusinessData, ServicesFormData, Specialists, Timeslot } from './types';
+import {
+  BusinessData,
+  ServicesFormData,
+  SocialNetwork,
+  Specialists,
+  Timeslot,
+} from './types';
+import { SocialNetworks } from './enums';
 import placeOne from '../assets/place1.jpg';
 import placeTwo from '../assets/place2.jpg';
 import aboutUsImage1 from '../assets/aboutUsImage1.jpg';
@@ -8,7 +15,9 @@ import aboutUsImage3 from '../assets/aboutUsImage3.jpg';
 
 export const BUSINESS_NAME = 'ALDOBARBERS';
 
-export const STEPPER_STEPS = [
+export const SERVICES_HEADER_TITLE = 'Aldobarbers Barbershop';
+
+export const STEPPER_STEPS: string[] = [
   'Вибір послуги',
   'Вибір спеціаліста',
   'Вибір дати та часу',
@@ -20,12 +29,12 @@ export const businessData: BusinessData[] = [
     name: 'Aldobarbers Barbershop',
     location: 'Львів, Князя Романа, 28',
     mapParams: { lat: 49.8373993, lng: 24.0320917, zoom: 17 },
-    workHours: '9:00 - 20:00',
+    workHours: '10:00 - 21:00',
     photo: placeOne,
-    rating: '4.5',
-    numberOfReviews: 400,
+    rating: '4.1',
+    numberOfReviews: 323,
     reviewsLink:
-      'https://www.google.com/maps/place/Solidol+Barbershop/@49.8503658,24.0201567,17z/data=!4m15!1m7!3m6!1s0x473add0a524a99a7:0x4f6e3e2da2da2f66!2z0LLRg9C70LjRhtGPINCf0ZbQtCDQlNGD0LHQvtC8LCA3LCDQm9GM0LLRltCyLCDQm9GM0LLRltCy0YHRjNC60LAg0L7QsdC70LDRgdGC0YwsIDc5MDAw!3b1!8m2!3d49.8502958!4d24.022357!3m6!1s0x473add0a51ff8a77:0xea42fcc139efdbb7!8m2!3d49.8503624!4d24.0223454!9m1!1b1',
+      'https://www.google.com/maps/place/Aldobarbers+Barbershop+and+School/@50.4508064,30.5187324,17z/data=!3m1!4b1!4m14!1m6!3m5!1s0x40d4ce508efa6af3:0xe0293171a984479!2sAldobarbers+Barbershop+and+School!8m2!3d50.450803!4d30.5209211!3m6!1s0x40d4ce508efa6af3:0xe0293171a984479!8m2!3d50.450803!4d30.5209211!9m1!1b1',
   },
   {
     name: 'Aldobarbers Barbershop',
@@ -36,7 +45,7 @@ export const businessData: BusinessData[] = [
     rating: '4.7',
     numberOfReviews: 437,
     reviewsLink:
-      'https://www.google.com/maps/place/%D0%A1%D0%BE%D0%BB%D1%96%D0%B4%D0%BE%D0%BB/@49.8375477,24.0307645,17z/data=!3m1!4b1!4m15!1m7!3m6!1s0x473add6ecd2f1443:0x8337e384b330c196!2z0LLRg9C70LjRhtGPINCa0L3Rj9C30Y8g0KDQvtC80LDQvdCwLCAyOCwg0JvRjNCy0ZbQsiwg0JvRjNCy0ZbQstGB0YzQutCwINC-0LHQu9Cw0YHRgtGMLCA3OTAwMA!3b1!8m2!3d49.8374885!4d24.0325972!3m6!1s0x473add693369dbef:0x960cb6353857edf0!8m2!3d49.8375443!4d24.0329532!9m1!1b1',
+      'https://www.google.com/maps/place/Aldobarbers+Barbershop+and+School/@50.4508064,30.5187324,17z/data=!3m1!4b1!4m14!1m6!3m5!1s0x40d4ce508efa6af3:0xe0293171a984479!2sAldobarbers+Barbershop+and+School!8m2!3d50.450803!4d30.5209211!3m6!1s0x40d4ce508efa6af3:0xe0293171a984479!8m2!3d50.450803!4d30.5209211!9m1!1b1',
   },
 ];
 
@@ -49,6 +58,48 @@ export const aboutUsText = {
   content:
     'Барбершоп з якого 15 березня 2014 року почалася історія\nрозвитку культури стрижок в Україні.У січні 2015 року, ми відкрили наш перший Барбершоп\nALDOBARBERS в маленькому підвальчику в центрі Києва. Замість дорогих\nперукарень крісел, ми створили свої - автомобільні. У нас зовсім не\nбуло грошей але були великі амбіції і сильні майстри. У 2017 році ми\nпереїхали в двоповерхове приміщення в історичному центрі Києва, а в\n2019 році відкрили Арт-Барбершоп в центрі Одеси. Тепер у нас 36\nвипусків з 18 країн про кращих Барбера і барбершопах на YouTube.\n  Міжнародна школа Барбера, в якій щорічно навчаються 147 абітурієнтів з\n27 країн, дипломовані майстри міжнародного класу, і як на самому\nпочатку шляху великі амбіції.',
 };
+
+export const contactInfo = [
+  {
+    id: uuidv4(),
+    location: {
+      value: 'Львів, Князя Романа 28',
+      mapParams: { lat: 49.8373993, lng: 24.0320917, zoom: 17 },
+    },
+    time: '10:00 - 21:00',
+    phone: {
+      value: '+380970300010',
+      label: '+38 097 030 00 10',
+    },
+  },
+  {
+    id: uuidv4(),
+    location: {
+      value: 'Львів, вулиця Під Дубом 7',
+      mapParams: { lat: 49.8502958, lng: 24.0201683, zoom: 17 },
+    },
+    time: '10:00 - 21:00',
+    phone: {
+      value: '+380970300010',
+      label: '+38 097 030 00 10',
+    },
+  },
+];
+
+export const SOCIAL_NETWORKS: SocialNetwork[] = [
+  {
+    key: SocialNetworks.Facebook,
+    link: 'https://www.facebook.com/aldobarberskiev/',
+  },
+  {
+    key: SocialNetworks.Instagram,
+    link: 'https://www.instagram.com/aldobarbers_kiev/',
+  },
+  {
+    key: SocialNetworks.Youtube,
+    link: 'https://www.youtube.com/channel/UC4qAj4YkE_oSZ6STk54r8Gw',
+  },
+];
 
 export const servicesFormData: ServicesFormData[] = [
   {

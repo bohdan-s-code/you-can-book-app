@@ -84,3 +84,16 @@ export const countSelectedServicesTotalTime = (
 ): number => {
   return selectedServices.reduce((a, b) => a + b.time, 0);
 };
+
+export const formatTime = (time: number) => {
+  if (time / 60 < 1) {
+    return `${time}хв.`;
+  }
+
+  if (time % 60 === 0) {
+    return `${time / 60}год.`;
+  }
+
+  return `${Math.floor(time / 60)}год. ${time -
+    Math.floor(time / 60) * 60}хв.`;
+};

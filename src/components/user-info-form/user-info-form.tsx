@@ -59,7 +59,6 @@ const UserInfoForm: FC<UserInfoFormStateProps & UserInfoFormDispatchProps> = ({
       >
         <Form className={styles.userInfoForm}>
           <Field
-            required
             component={TextField}
             variant="outlined"
             name="firstName"
@@ -76,7 +75,6 @@ const UserInfoForm: FC<UserInfoFormStateProps & UserInfoFormDispatchProps> = ({
             margin="dense"
           />
           <Field
-            required
             component={TextField}
             variant="outlined"
             name="phoneNumber"

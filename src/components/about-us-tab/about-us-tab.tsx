@@ -14,7 +14,7 @@ const AboutUsTab: FC = (): ReactElement => {
         animationSpeed={1000}
         adverts={aboutUsContent.photos}
       />
-      <Typography component="span" variant="h6">
+      <Typography component="span" variant="h6" className={styles.title}>
         {aboutUsText.title}
       </Typography>{' '}
       - <Typography component="span">{aboutUsText.content}</Typography>

@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 import { setServiceChecked } from '../../actions';
 import styles from './checkbox-item.module.scss';
 import { ServiceItem } from '../../core/types';
+import { formatTime } from '../../utils/services-utils';
 
 const CheckboxItem: FC<CheckboxItemProps> = ({
   item,
@@ -30,7 +31,7 @@ const CheckboxItem: FC<CheckboxItemProps> = ({
           {label}
         </Typography>
         <Typography variant="subtitle1" className={styles.itemSecondary}>
-          {price}грн. | {time}
+          {price}грн. | {formatTime(time)}
         </Typography>
       </div>
     );

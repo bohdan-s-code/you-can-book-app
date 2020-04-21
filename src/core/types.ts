@@ -1,4 +1,4 @@
-import { StepperSteps } from './enums';
+import { SocialNetworks, StepperSteps } from './enums';
 
 export interface GoogleMapsSearchParams {
   lat: number;
@@ -58,4 +58,9 @@ export type Timeslot = {
   id: string;
   value: string;
   selected: boolean;
+};
+
+export type SocialNetwork = {
+  key: SocialNetworks;
+  link: string;
 };

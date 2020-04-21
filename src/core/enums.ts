@@ -5,3 +5,9 @@ export enum StepperSteps {
   UserInfo,
   SuccessBooking,
 }
+
+export enum SocialNetworks {
+  Facebook = 'Facebook',
+  Instagram = 'Instagram',
+  Youtube = 'Youtube',
+}

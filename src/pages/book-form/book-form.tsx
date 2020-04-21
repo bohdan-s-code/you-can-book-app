@@ -21,6 +21,7 @@ import SuccessBookingPage from '../success-booking-page/success-booking-page';
 import { useWindowDimensions } from '../../hooks/useWindowDimensions';
 import { STEPPER_STEPS } from '../../core/mock-data';
 import { StepperSteps } from '../../core/enums';
+import * as mockData from '../../core/mock-data';
 import styles from './book-form.module.scss';
 
 const BookForm: FC<BookFormProps> = ({
@@ -73,9 +74,12 @@ const BookForm: FC<BookFormProps> = ({
       <AppBar position="fixed" classes={{ root: styles.header }}>
         <Toolbar classes={{ root: styles.toolbar }}>
           {renderHeaderToolbarActions()}
-          <Typography variant="h6" className={styles.title}>
-            Service
-          </Typography>
+          <div style={{ alignItems: 'center', display: 'flex' }}>
+            <Typography variant="h6" className={styles.title}>
+              {mockData.SERVICES_HEADER_TITLE}
+              <Typography color="textSecondary">Онлайн запис</Typography>
+            </Typography>
+          </div>
         </Toolbar>
       </AppBar>
 

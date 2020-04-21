@@ -21,6 +21,7 @@ import styles from './select-service-form.module.scss';
 import {
   countSelectedServicesTotalPrice,
   countSelectedServicesTotalTime,
+  formatTime,
   servicesSearch,
 } from '../../utils/services-utils';
 
@@ -53,7 +54,7 @@ const SelectServiceForm: FC<SelectServiceFormStateProps &
       <TextField
         value={searchValue}
         id="outlined-basic"
-        placeholder="Search"
+        placeholder="Пошук"
         variant="outlined"
         className={styles.searchField}
         onChange={handleSearchChange}
@@ -92,7 +93,8 @@ const SelectServiceForm: FC<SelectServiceFormStateProps &
               variant="caption"
               className={styles.serviceSecondaryCount}
             >
-              Ціна: {countTotalPrice()}грн. | Тривалість: {countTotalDuration()}
+              Ціна: {countTotalPrice()}грн. | Тривалість:{' '}
+              {formatTime(countTotalDuration())}
             </Typography>
           </div>
         }
