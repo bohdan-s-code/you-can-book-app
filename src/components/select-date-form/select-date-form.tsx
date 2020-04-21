@@ -15,6 +15,7 @@ import { AppState } from '../../reducers';
 import { Timeslot } from '../../core/types';
 import { formatDate } from '../../utils/date-utils';
 import { getSelectedTimeslots } from '../../selectors';
+import { useWindowDimensions } from '../../hooks/useWindowDimensions';
 import styles from './select-date-form.module.scss';
 
 const SelectDateForm: FC<SelectDateFormDispatchProps &
@@ -30,36 +31,31 @@ const SelectDateForm: FC<SelectDateFormDispatchProps &
 }): ReactElement => {
   const [showTime, setShowTime] = useState(!!selectedTimeslots.length);
   const myRef = useRef<null | HTMLDivElement>(null);
+  const { width, height } = useWindowDimensions();
 
   const handleDatePickerChange = (date: any): void => {
-    if (myRef.current) myRef.current.scrollIntoView({ behavior: 'smooth' });
+    if (width <= 600) {
+      window.scrollTo(0, height);
+    }
     setBookingDate(new Date(date));
     setShowTime(true);
   };
 
   const handleClearDate = (): void => {
+    window.scrollTo(0, 0);
     clearDateSelected();
     setShowTime(false);
   };
 
-  return (
-    <div className={styles.container} ref={myRef}>
-      <Paper className={styles.picker} square elevation={showTime ? 1 : 15}>
-        <DatePicker
-          autoOk
-          orientation="portrait"
-          variant="static"
-          openTo="date"
-          value={date}
-          onChange={handleDatePickerChange}
-          disablePast={true}
-          PopoverProps={{
-            className: styles.picker,
-          }}
-        />
-      </Paper>
-      {showTime ? (
-        <Slide direction="up" in={showTime}>
+  const handleNextStep = (): void => {
+    window.scrollTo(0, 0);
+    setNextStep();
+  };
+
+  const renderTimeslotSelect = (): ReactElement | null => {
+    if (width <= 600 || (width > 600 && showTime)) {
+      return (
+        <Slide direction="up" in={showTime} ref={myRef}>
           <Paper
             className={styles.times}
             square
@@ -85,7 +81,29 @@ const SelectDateForm: FC<SelectDateFormDispatchProps &
             </div>
           </Paper>
         </Slide>
-      ) : null}
+      );
+    }
+
+    return null;
+  };
+
+  return (
+    <div className={styles.container}>
+      <Paper className={styles.picker} square elevation={showTime ? 1 : 15}>
+        <DatePicker
+          autoOk
+          orientation="portrait"
+          variant="static"
+          openTo="date"
+          value={date}
+          onChange={handleDatePickerChange}
+          disablePast={true}
+          PopoverProps={{
+            className: styles.picker,
+          }}
+        />
+      </Paper>
+      {renderTimeslotSelect()}
       {selectedTimeslots.length ? (
         <Snackbar
           anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
@@ -115,7 +133,11 @@ const SelectDateForm: FC<SelectDateFormDispatchProps &
               >
                 Очистити вибір <DeleteForever />
               </Button>
-              <Button color="primary" variant="contained" onClick={setNextStep}>
+              <Button
+                color="primary"
+                variant="contained"
+                onClick={handleNextStep}
+              >
                 Далі
               </Button>
             </div>
